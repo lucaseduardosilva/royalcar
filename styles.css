@@ -103,6 +103,7 @@ body {
     max-height: 18px !important;
     object-fit: contain !important;
     flex-shrink: 0;
+    border-radius: 6px;
 }
 
 .lang-flag {
@@ -112,6 +113,7 @@ body {
     max-height: 18px !important;
     object-fit: contain !important;
     display: block !important;
+    border-radius: 6px;
 }
 
 .nav-menu {
@@ -942,6 +944,7 @@ body {
         max-width: 20px !important;
         max-height: 15px !important;
         object-fit: contain !important;
+        border-radius: 3px;
     }
 
     .lang-flag {
@@ -950,6 +953,7 @@ body {
         max-width: 20px !important;
         max-height: 15px !important;
         object-fit: contain !important;
+        border-radius: 3px;
     }
 
     .nav-toggle span:nth-child(1) {

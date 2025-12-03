@@ -29,7 +29,7 @@ function translatePage(lang) {
     document.documentElement.lang = lang;
     const langFlagImg = document.getElementById('lang-flag-img');
     if (langFlagImg) {
-        langFlagImg.src = lang === 'pt' ? 'images/en.webp' : 'images/pt.webp';
+        langFlagImg.src = lang === 'pt' ? 'images/en.png' : 'images/pt.png';
         langFlagImg.alt = lang === 'pt' ? 'English' : 'Português';
     }
     
