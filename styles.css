@@ -491,6 +491,16 @@ body {
     line-height: 1.8;
 }
 
+.servicos-cta {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.btn-cta {
+    font-size: 1.1rem;
+    padding: 1.2rem 2.5rem;
+}
+
 .diferenciais {
     padding: 8rem 0;
     background-color: var(--color-dark);
