@@ -110,6 +110,10 @@ body {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    position: relative;
+    width: 25px;
+    height: 20px;
+    justify-content: center;
 }
 
 .nav-toggle span {
@@ -117,6 +121,9 @@ body {
     height: 2px;
     background-color: var(--color-white);
     transition: all 0.3s ease;
+    transform-origin: center;
+    position: absolute;
+    left: 0;
 }
 
 .hero {
@@ -804,8 +811,21 @@ body {
         display: flex;
     }
 
+    .nav-toggle span:nth-child(1) {
+        top: 0;
+    }
+
+    .nav-toggle span:nth-child(2) {
+        top: 9px;
+    }
+
+    .nav-toggle span:nth-child(3) {
+        bottom: 0;
+    }
+
     .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
+        top: 9px;
+        transform: rotate(45deg);
     }
 
     .nav-toggle.active span:nth-child(2) {
@@ -813,7 +833,8 @@ body {
     }
 
     .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
+        bottom: 9px;
+        transform: rotate(-45deg);
     }
 
     .sobre-content,
