@@ -188,5 +188,48 @@ Mensagem: ${formData.mensagem}
 
         resetCarousel();
     }
+
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    const toast = document.getElementById('toast');
+
+    emailLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = this.getAttribute('href').replace('mailto:', '');
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    showToast();
+                }).catch(() => {
+                    fallbackCopy(email);
+                });
+            } else {
+                fallbackCopy(email);
+            }
+        });
+    });
+
+    function fallbackCopy(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            showToast();
+        } catch (err) {
+            console.error('Erro ao copiar:', err);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    function showToast() {
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
 });
 
