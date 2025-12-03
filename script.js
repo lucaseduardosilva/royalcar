@@ -125,7 +125,10 @@ Mensagem: ${formData.mensagem}
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const headerHeight = header.offsetHeight;
-                const targetPosition = target.offsetTop - headerHeight;
+                const isDesktop = window.innerWidth > 768;
+                const isInicio = this.getAttribute('href') === '#inicio';
+                const extraOffset = (isDesktop && !isInicio) ? -100 : 0;
+                const targetPosition = target.offsetTop - headerHeight - extraOffset;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
