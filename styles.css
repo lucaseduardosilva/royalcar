@@ -95,11 +95,23 @@ body {
     background-color: rgba(158, 95, 36, 0.1);
 }
 
+.lang-switcher img {
+    display: block !important;
+    width: 24px !important;
+    height: 18px !important;
+    max-width: 24px !important;
+    max-height: 18px !important;
+    object-fit: contain !important;
+    flex-shrink: 0;
+}
+
 .lang-flag {
-    width: 24px;
-    height: 18px;
-    object-fit: cover;
-    display: block;
+    width: 24px !important;
+    height: 18px !important;
+    max-width: 24px !important;
+    max-height: 18px !important;
+    object-fit: contain !important;
+    display: block !important;
 }
 
 .nav-menu {
@@ -924,9 +936,20 @@ body {
         padding: 0.4rem 0.6rem;
     }
 
+    .lang-switcher img {
+        width: 20px !important;
+        height: 15px !important;
+        max-width: 20px !important;
+        max-height: 15px !important;
+        object-fit: contain !important;
+    }
+
     .lang-flag {
-        width: 20px;
-        height: 15px;
+        width: 20px !important;
+        height: 15px !important;
+        max-width: 20px !important;
+        max-height: 15px !important;
+        object-fit: contain !important;
     }
 
     .nav-toggle span:nth-child(1) {
