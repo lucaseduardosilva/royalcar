@@ -1,4 +1,68 @@
+let currentLang = localStorage.getItem('lang') || 'pt';
+
+function getNestedValue(obj, path) {
+    return path.split('.').reduce((current, key) => current && current[key], obj);
+}
+
+function translatePage(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const translation = getNestedValue(translations[lang], key);
+        if (translation) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translation;
+            } else if (element.hasAttribute('data-i18n-href')) {
+                const hrefKey = element.getAttribute('data-i18n-href');
+                const hrefTranslation = getNestedValue(translations[lang], hrefKey);
+                if (hrefTranslation && lang === 'en') {
+                    element.href = `https://wa.me/5519995963470?text=Hello,%20I%20would%20like%20to%20request%20a%20quote`;
+                } else if (hrefTranslation && lang === 'pt') {
+                    element.href = `https://wa.me/5519995963470?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento`;
+                }
+            } else {
+                element.textContent = translation;
+            }
+        }
+    });
+    
+    document.documentElement.lang = lang;
+    const langFlagImg = document.getElementById('lang-flag-img');
+    if (langFlagImg) {
+        langFlagImg.src = lang === 'pt' ? 'images/en.webp' : 'images/pt.webp';
+        langFlagImg.alt = lang === 'pt' ? 'English' : 'Português';
+    }
+    
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+    whatsappLinks.forEach(link => {
+        if (lang === 'en') {
+            if (link.textContent.includes('Consultar') || link.textContent.includes('Check')) {
+                link.href = 'https://wa.me/5519995963470?text=Hello,%20I%20would%20like%20to%20check%20available%20vehicles';
+            } else if (link.textContent.includes('Falar') || link.textContent.includes('Talk')) {
+                link.href = 'https://wa.me/5519995963470?text=Hello,%20I%20would%20like%20to%20request%20a%20quote';
+            }
+        } else {
+            if (link.textContent.includes('Consultar') || link.textContent.includes('Check')) {
+                link.href = 'https://wa.me/5519995963470?text=Olá,%20gostaria%20de%20consultar%20os%20veículos%20disponíveis';
+            } else if (link.textContent.includes('Falar') || link.textContent.includes('Talk')) {
+                link.href = 'https://wa.me/5519995963470?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento';
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    translatePage(currentLang);
+    
+    const langSwitcher = document.getElementById('lang-switcher');
+    if (langSwitcher) {
+        langSwitcher.addEventListener('click', function() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            localStorage.setItem('lang', currentLang);
+            translatePage(currentLang);
+        });
+    }
+    
     const header = document.getElementById('header');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');

@@ -64,11 +64,42 @@ body {
     align-items: center;
 }
 
+.nav-container > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-copper);
     letter-spacing: -0.5px;
+}
+
+.lang-switcher {
+    background: transparent;
+    border: 1px solid var(--color-gray-light);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+}
+
+.lang-switcher:hover {
+    border-color: var(--color-copper);
+    background-color: rgba(158, 95, 36, 0.1);
+}
+
+.lang-flag {
+    width: 24px;
+    height: 18px;
+    object-fit: cover;
+    display: block;
 }
 
 .nav-menu {
@@ -886,6 +917,16 @@ body {
 
     .nav-toggle {
         display: flex;
+    }
+
+    .lang-switcher {
+        margin-left: 0;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .lang-flag {
+        width: 20px;
+        height: 15px;
     }
 
     .nav-toggle span:nth-child(1) {
