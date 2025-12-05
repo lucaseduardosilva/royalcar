@@ -249,11 +249,16 @@ body {
     font-size: 1rem;
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-primary {
     background-color: var(--color-copper);
     color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
 }
 
 .btn-primary:hover {
